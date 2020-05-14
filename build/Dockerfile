@@ -3,5 +3,6 @@ WORKDIR /app
 ADD go.mod go.sum /app/
 RUN go mod download
 ADD . /app/
-RUN go build -o main cmd/cargo.go
+ARG location=cmd
+RUN go build -o main ${location}/cargo.go
 ENTRYPOINT ["./main"]
