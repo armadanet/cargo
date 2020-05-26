@@ -1,0 +1,10 @@
+mode: set
+github.com/armadanet/cargo/server/request_old.go:23.32,25.17 2 0
+github.com/armadanet/cargo/server/request_old.go:29.3,32.4 2 0
+github.com/armadanet/cargo/server/request_old.go:25.17,28.4 2 0
+github.com/armadanet/cargo/server/request_old.go:35.57,39.10 4 0
+github.com/armadanet/cargo/server/request_old.go:43.3,43.16 1 0
+github.com/armadanet/cargo/server/request_old.go:39.10,42.4 2 0
+github.com/armadanet/cargo/server/server.go:18.27,24.2 3 1
+github.com/armadanet/cargo/server/server.go:26.71,28.2 1 1
+github.com/armadanet/cargo/server/server.go:30.38,30.39 0 0

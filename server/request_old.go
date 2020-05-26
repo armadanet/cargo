@@ -1,4 +1,4 @@
-package cargo
+package server
 
 import (
   "github.com/armadanet/comms"

@@ -21,6 +21,8 @@ github.com/armadanet/captain/dockercntrl v0.0.0-20200320114501-d84544667f9b h1:6
 github.com/armadanet/captain/dockercntrl v0.0.0-20200320114501-d84544667f9b/go.mod h1:6zVbYBcKeZW6Dh04hbPXA7jP/94fgLLmxq4yDIFLS2c=
 github.com/armadanet/captain/dockercntrl v0.0.0-20200320114555-e6d3af7ae275 h1:Us4ZqosYN+TzxnKh5IzguPieiE6OBJhmiDmBhglS5W4=
 github.com/armadanet/captain/dockercntrl v0.0.0-20200320114555-e6d3af7ae275/go.mod h1:6zVbYBcKeZW6Dh04hbPXA7jP/94fgLLmxq4yDIFLS2c=
+github.com/armadanet/comms v0.0.0-20200221145451-dcf27e32ffc8 h1:qunYG4a74sNw8g4y64FunYSW6L0/FVPhxs4WXfAstkU=
+github.com/armadanet/comms v0.0.0-20200221145451-dcf27e32ffc8/go.mod h1:R9YoQLBmYniidW8eTXaGtP+WuR82JWB/bXVnYgnlTcQ=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/docker/distribution v2.7.1+incompatible h1:a5mlkVzth6W5A4fOsS3D2EO5BUmsJpcB+cRlLU7cSug=
 github.com/docker/distribution v2.7.1+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
@@ -32,6 +34,10 @@ github.com/docker/go-units v0.4.0 h1:3uh0PgVws3nIA0Q+MwDC8yjEPf9zjRfZZWXZYDct3Tw
 github.com/docker/go-units v0.4.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
 github.com/google/uuid v1.1.1 h1:Gkbcsh/GbpXz7lPftLA3P6TYMwjCLYm83jiFQZF/3gY=
 github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
+github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+github.com/gorilla/websocket v1.4.1 h1:q7AeDBpnBk8AogcD4DSag/Ukw/KV+YhzLj2bP5HvKCM=
+github.com/gorilla/websocket v1.4.1/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
 github.com/opencontainers/go-digest v1.0.0-rc1 h1:WzifXhOVOEOuFYOJAW6aQqW0TooG2iki3E3Ii+WN7gQ=
 github.com/opencontainers/go-digest v1.0.0-rc1/go.mod h1:cMLVZDEM3+U2I4VmLI6N8jQYUd2OVphdqWwCJHrFt2s=
