@@ -9,7 +9,7 @@ import (
 
 func TestServerSetup(t *testing.T) {
   t.Parallel()
-  _ = server.Server()
+  _ = server.NewServer()
 
   expected := "ws://armada-storage:8081/connect"
   got := server.ConnectSocketAddr()

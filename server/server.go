@@ -24,7 +24,7 @@ type cargoserver struct {
   filesys filesystem.CargoReadWriter
 }
 
-func Server() CargoServer {
+func NewServer() CargoServer {
   server := &cargoserver{
     router: mux.NewRouter().StrictSlash(true),
     filesys: filesystem.Hierarchical(),

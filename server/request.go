@@ -66,6 +66,16 @@ type Requestor struct {
   socket          comms.Socket
   RequestChannel  chan *Request
   ResponseChannel chan *Response
+  quit            chan interface{}
+}
+
+func (r *Requestor) Quit() {
+  select {
+  case <- r.quit:
+  default:
+    close(r.quit)
+    r.socket.Close()
+  }
 }
 
 func NewRequestor() (*Requestor, error) {
@@ -79,12 +89,20 @@ func CustomRequestor(socket comms.Socket) *Requestor {
     socket: socket,
     RequestChannel: make(chan *Request),
     ResponseChannel: make(chan *Response),
+    quit: make(chan interface{}),
   }
   go func() {
     defer func() {
-      close(r.RequestChannel)
-      close(r.ResponseChannel)
-      r.socket.Close()
+      select {
+      case <- r.RequestChannel:
+      default:
+        close(r.RequestChannel)
+      }
+      select {
+      case <- r.ResponseChannel:
+      default:
+        close(r.ResponseChannel)
+      }
     }()
     reader := r.socket.Reader()
     writer := r.socket.Writer()
@@ -98,6 +116,8 @@ func CustomRequestor(socket comms.Socket) *Requestor {
       case input, ok := <- r.RequestChannel:
         if !ok {return}
         writer <- input
+      case <- r.quit:
+        return
       }
     }
   }()

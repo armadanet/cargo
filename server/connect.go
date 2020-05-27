@@ -12,6 +12,10 @@ func (s *cargoserver) Connect(w http.ResponseWriter, r *http.Request) {
     log.Println(err)
     return
   }
+  s.ConnectLoop(socket)
+}
+
+func (s *cargoserver) ConnectLoop(socket comms.Socket) {
   socket.Start(Request{})
   defer func() {
     socket.Close()
@@ -42,7 +46,7 @@ func (s *cargoserver) Connect(w http.ResponseWriter, r *http.Request) {
         }
 
       case WriteRequest:
-        err = s.filesys.WriteFile(req.Filename, req.Data)
+        err := s.filesys.WriteFile(req.Filename, req.Data)
         if err != nil {
           writer <- &Response{
             Id: req.Id,
