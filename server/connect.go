@@ -3,6 +3,7 @@ package server
 import (
   "net/http"
   "github.com/armadanet/comms"
+  "log"
 )
 
 func (s *cargoserver) Connect(w http.ResponseWriter, r *http.Request) {

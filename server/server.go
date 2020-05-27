@@ -6,16 +6,22 @@ import (
   "fmt"
   "strconv"
   "github.com/armadanet/cargo/filesystem"
+  "log"
+)
+
+const (
+  Port int    = 8081
+  Name string = "armada-storage"
 )
 
 type CargoServer interface {
-  Run(port int)
+  Run()
   Connect(w http.ResponseWriter, r *http.Request)
 }
 
 type cargoserver struct {
   router  *mux.Router
-  filesys CargoReadWriter
+  filesys filesystem.CargoReadWriter
 }
 
 func Server() CargoServer {
@@ -27,6 +33,10 @@ func Server() CargoServer {
   return server
 }
 
-func (s *cargoserver) Run(port int) {
-  log.Fatal(http.ListenAndServe(":" + strconv.Itoa(port), s.router))
+func (s *cargoserver) Run() {
+  log.Fatal(http.ListenAndServe(":" + strconv.Itoa(Port), s.router))
+}
+
+func ConnectSocketAddr() string {
+  return fmt.Sprintf("ws://%s:%d/connect", Name, Port)
 }

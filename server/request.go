@@ -29,9 +29,9 @@ type Request struct {
 type NoFilenameError struct {}
 func (e *NoFilenameError) Error() string {return "No filename given"}
 type NilDataError struct {} // Data can be empty, but not nil
-func (e *NoDataError) Error() string {return "Nil data given"}
+func (e *NilDataError) Error() string {return "Nil data given"}
 
-func ReadRequest(filename string) (*Request, error) {
+func NewReadRequest(filename string) (*Request, error) {
   if filename == "" {return nil, &NoFilenameError{}}
   id, err := uuid.NewRandom()
   if err != nil {return nil, err}
@@ -43,7 +43,7 @@ func ReadRequest(filename string) (*Request, error) {
   }, nil
 }
 
-func WriteRequest(filename string, data []byte) (*Request, error) {
+func NewWriteRequest(filename string, data []byte) (*Request, error) {
   if filename == "" {return nil, &NoFilenameError{}}
   if data == nil {return nil, &NilDataError{}}
   id, err := uuid.NewRandom()
@@ -53,7 +53,7 @@ func WriteRequest(filename string, data []byte) (*Request, error) {
     ReqType: WriteRequest,
     Filename: filename,
     Data: data,
-  }
+  }, nil
 }
 
 type Response struct {
@@ -63,18 +63,18 @@ type Response struct {
 }
 
 type Requestor struct {
-  socket          *comms.Socket
+  socket          comms.Socket
   RequestChannel  chan *Request
   ResponseChannel chan *Response
 }
 
-func Requestor() (*Requestor, error) {
-  socket, err := comms.EstablishSocket("ws://armada-storage:8081/connect")
+func NewRequestor() (*Requestor, error) {
+  socket, err := comms.EstablishSocket(ConnectSocketAddr())
   if err != nil {return nil, err}
   return CustomRequestor(socket), nil
 }
 
-func CustomRequestor(socket *comms.Socket) *Requestor {
+func CustomRequestor(socket comms.Socket) *Requestor {
   r := &Requestor{
     socket: socket,
     RequestChannel: make(chan *Request),
@@ -84,10 +84,10 @@ func CustomRequestor(socket *comms.Socket) *Requestor {
     defer func() {
       close(r.RequestChannel)
       close(r.ResponseChannel)
-      (*r.socket).Close()
+      r.socket.Close()
     }()
-    reader := (*r.socket).Reader()
-    writer := (*r.socket).Writer()
+    reader := r.socket.Reader()
+    writer := r.socket.Writer()
     for {
       select {
       case input, ok := <- reader:
@@ -101,6 +101,6 @@ func CustomRequestor(socket *comms.Socket) *Requestor {
       }
     }
   }()
-  (*r.socket).Start(Response{})
+  r.socket.Start(Response{})
   return r
 }
