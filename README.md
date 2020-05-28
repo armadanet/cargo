@@ -1,6 +1,7 @@
 # cargo
 
 [![Coverage Status](https://coveralls.io/repos/github/armadanet/cargo/badge.svg?branch=testing)](https://coveralls.io/github/armadanet/cargo?branch=testing)
+[![Build Status](https://travis-ci.com/armadanet/cargo.svg?branch=testing)](https://travis-ci.com/armadanet/cargo)
 
 This is for persistent storage.  
 Requires a mechanism to for global information access.  
