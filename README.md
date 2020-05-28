@@ -1,5 +1,7 @@
 # cargo
 
+[![Coverage Status](https://coveralls.io/repos/github/armadanet/cargo/badge.svg?branch=master)](https://coveralls.io/github/armadanet/cargo?branch=master)
+
 This is for persistent storage.  
 Requires a mechanism to for global information access.  
 Persistence means either:
@@ -12,4 +14,4 @@ Investigate the alternatives: Kubeedge, swarmkit, other moby tech.
 
 Anticipated: A docker-only version of the system is inferior to these others, but a wider version specifically designed for consumer results in a specialization for the system.
 
-See how these others manage data, and build set-up a simple system for data management. 
+See how these others manage data, and build set-up a simple system for data management.
