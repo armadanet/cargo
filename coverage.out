@@ -1,6 +1,0 @@
-mode: count
-github.com/armadanet/cargo/filesystem/hierarchical.go:15.37,18.46 1 1
-github.com/armadanet/cargo/filesystem/hierarchical.go:18.46,20.6 1 0
-github.com/armadanet/cargo/filesystem/hierarchical.go:23.89,28.2 1 5
-github.com/armadanet/cargo/filesystem/hierarchical.go:30.66,32.2 1 4
-github.com/armadanet/cargo/filesystem/hierarchical.go:34.70,36.2 1 2
