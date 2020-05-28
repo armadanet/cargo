@@ -7,6 +7,7 @@ import (
   "strconv"
   "github.com/armadanet/cargo/filesystem"
   "log"
+  "github.com/armadanet/comms"
 )
 
 const (
@@ -17,6 +18,7 @@ const (
 type CargoServer interface {
   Run()
   Connect(w http.ResponseWriter, r *http.Request)
+  ConnectLoop(socket comms.Socket)
 }
 
 type cargoserver struct {
@@ -25,9 +27,13 @@ type cargoserver struct {
 }
 
 func NewServer() CargoServer {
+  return NewCustomServer(filesystem.Hierarchical())
+}
+
+func NewCustomServer(filesys filesystem.CargoReadWriter) CargoServer {
   server := &cargoserver{
     router: mux.NewRouter().StrictSlash(true),
-    filesys: filesystem.Hierarchical(),
+    filesys: filesys,
   }
   server.router.HandleFunc("/connect", server.Connect)
   return server
