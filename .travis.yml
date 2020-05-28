@@ -10,5 +10,5 @@ script:
   - go test -v -covermode=count -coverprofile=coverage_filesystem.out -tags="unit" ./filesystem/...
   - go test -v -covermode=count -coverprofile=coverage_server.out -tags="unit" ./server/...
   - cat coverage_filesystem.out > coverage.out
-  - cat coverage_server.out >> coverage.out
+  - tail -n +2 coverage_server.out >> coverage.out
   - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
