@@ -21,7 +21,7 @@ type Requester struct {
 }
 
 func NewRequester() *Requester {
-  socket, err := comms.EstablishSocket("ws://armada-storage:8081/connect")
+  socket, err := comms.EstablishSocket("ws://armada-storage-primary:8081/connect")
   if err != nil {
     log.Println(err)
     return nil
